@@ -6,3 +6,6 @@ D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.csprojAssemblyRefe
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.csproj.CoreCompileInputs.cache
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.AssemblyInfoInputs.cache
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.AssemblyInfo.cs
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\Debug\netcoreapp2.1\MUDGOD.pdb
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.dll
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\Debug\netcoreapp2.1\MUDGOD.pdb
