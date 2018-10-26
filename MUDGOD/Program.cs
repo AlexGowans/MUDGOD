@@ -16,7 +16,7 @@ namespace MUDGOD {
     class Program {
         private DiscordSocketClient Client;
         private CommandService Commands;
-        private TOKEN tokenFile = new TOKEN();
+        private TOKEN tokenFile = new TOKEN();  //Core/TOKEN/TOKEN.cs  add this file w a public string 'token'
         private static readonly string commandPrefix = "^";
 
 
