@@ -5929,23 +5929,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HvnlyMitsu\\.nuget\\packages\\": {},
+    "C:\\Users\\Alex\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SCHOOL\\MUDGOD\\MUDGOD\\MUDGOD\\MUDGOD.csproj",
+      "projectUniqueName": "D:\\MUDGOD\\MUDGOD\\MUDGOD.csproj",
       "projectName": "MUDGOD",
-      "projectPath": "D:\\SCHOOL\\MUDGOD\\MUDGOD\\MUDGOD\\MUDGOD.csproj",
-      "packagesPath": "C:\\Users\\HvnlyMitsu\\.nuget\\packages\\",
-      "outputPath": "D:\\SCHOOL\\MUDGOD\\MUDGOD\\MUDGOD\\obj\\",
+      "projectPath": "D:\\MUDGOD\\MUDGOD\\MUDGOD.csproj",
+      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+      "outputPath": "D:\\MUDGOD\\MUDGOD\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\HvnlyMitsu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

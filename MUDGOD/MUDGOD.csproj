@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Data\" />
     <Folder Include="GameEngine\GameCommands\" />
     <Folder Include="Resources\Database\" />
     <Folder Include="Resources\Datatypes\" />

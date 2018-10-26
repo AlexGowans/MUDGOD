@@ -43,9 +43,7 @@ namespace MUDGOD {
             await Client.LoginAsync(TokenType.Bot, tokenFile.token);    //get bot token and log in
             await Client.StartAsync();                                 //Start Client
 
-            await Task.Delay(-1);           //Wait for a task forever
-
-            PlayerCharacter steve = new PlayerCharacter(new PeasantClass(), name: "Steve");
+            await Task.Delay(-1);           //Wait for a task forever         
         }
 
 

@@ -18,7 +18,8 @@ namespace MUDGOD{
         public int manaPoints;
         public int strPoints;
         public int dexPoints;
-        public int intPoints;
+        public int intPoints;//blk mgc
+        public int wisPoints;//wht mgc
         public int lckPoints;
         public int defPoints;
 
@@ -26,7 +27,8 @@ namespace MUDGOD{
 
         //INITIALISE
         public Actor(string name = "No-name",
-                                int size = 1, int hp = 100, int mp = 100, int str = 10, int dex = 10, int intP = 10, int lck = 10, int def = 10,
+                                int size = 1, int hp = 100, int mp = 100,
+                                int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int locX = 0, int locY = 0) {
             this.name = name;
             this.bodySize = size;
@@ -36,6 +38,7 @@ namespace MUDGOD{
             this.dexPoints = dex;
             this.intPoints = intP;
             this.lckPoints = lck;
+            this.wisPoints = wis;
             this.defPoints = def;
             this.mapLocation.X = locX;
             this.mapLocation.Y = locY;
