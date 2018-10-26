@@ -103,11 +103,16 @@ namespace MUDGOD {
             //How to send message to default channel? Context throws an error even when public async override
             //await Context.Channel.SendMessageAsync("Hello World");
         }
+
         //Target Stuff
-        public float RollToHit() {  //this will have to be compared against the targets passive dodge
+        public int RollToHit() {  //this will have to be compared against the targets passive dodge
             Random rnd = new Random();
             float me = accuracyPoints + rnd.Next(1, 21);    //acc + 1-20
-            return me;
+            return (int)me;
+        }
+        public bool CheckIfHit(int acc) {
+            if (acc > passiveDodgePoints) return true;  //return true if an attack hits you  
+            return false;                               //otherwise return false
         }
     }
 }
