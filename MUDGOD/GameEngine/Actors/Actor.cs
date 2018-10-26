@@ -12,6 +12,7 @@ namespace MUDGOD{
     class Actor {
         public string name;
         public int bodySize; //0-5?
+        public int level;
 
         public int healthPointsMax;
         public int healthPoints;
@@ -31,13 +32,15 @@ namespace MUDGOD{
         public Vector2 mapLocation = new Vector2(0,0);
 
         //INITIALISE
-        public Actor(string name = "No-name",
-                                int size = 1, int hp = 100, int mp = 100,
+        public Actor(string name = "No-name", int size = 1, int level = 1,
+                                int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
                                 int locX = 0, int locY = 0) {
             this.name = name;
             this.bodySize = size;
+            this.level = level;
+
             this.healthPoints = this.healthPointsMax = hp;
             this.manaPoints = this.manaPointsMax = mp;
 

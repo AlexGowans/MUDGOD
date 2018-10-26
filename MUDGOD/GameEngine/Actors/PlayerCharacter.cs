@@ -20,27 +20,30 @@ namespace MUDGOD {
         public string playerName; //the name of the user, not character, that is in Actor name
         public PlayerClass myClass;
 
-        //Unlocked classes - used for trying to change class
-        bool unlockedPeasant;
-        bool unlockedFighter;
-        bool unlockedMagician;
-        bool unlockedRanger;
+        //Class levels : 0 = not unlocked yet
+        int peasantLevel;
+        int fighterLevel;
+        int magicianLevel;
+        int rangerLevel;
 
         //This constructor comes after the base actor and overwrites it
         public PlayerCharacter(PlayerClass myClass, int id, string playerName = "No User", string name = "No-name",
-                                bool peasant = true, bool fighter = false, bool magician = false, bool ranger = false,  //gives us the ability to grant classes right away if we want
-                                int size = 1, int hp = 100, int mp = 100,
+                                int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
+                                int size = 1, int level = 1,
+                                int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10,int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
                                 int locX = 0, int locY = 0) {
             this.playerId   = id;
             this.playerName = name;
-            this.myClass    = myClass;
+            this.level      = level;
 
-            this.unlockedPeasant  = peasant;
-            this.unlockedFighter  = fighter;
-            this.unlockedMagician = magician;
-            this.unlockedRanger   = ranger;
+            this.myClass    = myClass;      //set the class
+            this.peasantLevel  = peasant;   //get default levels for your classes
+            this.fighterLevel  = fighter;
+            this.magicianLevel = magician;
+            this.rangerLevel   = ranger;
+            SetClassLevel();                //Set myClass.level to appropriate int, do this everytime you change class
 
             this.name = name;
             this.bodySize = size;
@@ -124,5 +127,23 @@ namespace MUDGOD {
             if (acc > passiveDodgePoints) return true;  //return true if an attack hits you  
             return false;                               //otherwise return false
         }
+
+
+        //Class setting
+        public void SetClassLevel() {   //Run this after changing class
+            if (myClass.name == "Peasant") {
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Fighter") {
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Magician") {
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Ranger") {
+                myClass.level = peasantLevel;
+            }
+        }
+
     }
 }
