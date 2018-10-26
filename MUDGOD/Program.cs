@@ -16,7 +16,7 @@ namespace MUDGOD {
     class Program {
         private DiscordSocketClient Client;
         private CommandService Commands;
-        private TOKEN tokenFile = new TOKEN();
+        private TOKEN tokenFile = new TOKEN();  //Core/TOKEN/TOKEN.cs  add this file w a public string 'token'
         private static readonly string commandPrefix = "^";
 
 
@@ -43,9 +43,7 @@ namespace MUDGOD {
             await Client.LoginAsync(TokenType.Bot, tokenFile.token);    //get bot token and log in
             await Client.StartAsync();                                 //Start Client
 
-            await Task.Delay(-1);           //Wait for a task forever
-
-            PlayerCharacter steve = new PlayerCharacter(new PeasantClass(), name: "Steve");
+            await Task.Delay(-1);           //Wait for a task forever         
         }
 
 

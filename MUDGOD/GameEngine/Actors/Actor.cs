@@ -12,33 +12,58 @@ namespace MUDGOD{
     class Actor {
         public string name;
         public int bodySize; //0-5?
+
         public int healthPointsMax;
         public int healthPoints;
         public int manaPointsMax;
         public int manaPoints;
+
         public int strPoints;
         public int dexPoints;
-        public int intPoints;
+        public int intPoints;//blk mgc
+        public int wisPoints;//wht mgc
         public int lckPoints;
         public int defPoints;
+
+        public int accuracyPoints;      //kind of like attack in dnd, add d20 roll and compare to target passive dodge
+        public int passiveDodgePoints;
 
         public Vector2 mapLocation = new Vector2(0,0);
 
         //INITIALISE
         public Actor(string name = "No-name",
-                                int size = 1, int hp = 100, int mp = 100, int str = 10, int dex = 10, int intP = 10, int lck = 10, int def = 10,
+                                int size = 1, int hp = 100, int mp = 100,
+                                int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
+                                int acc = 5, int dodge = 15,
                                 int locX = 0, int locY = 0) {
             this.name = name;
             this.bodySize = size;
             this.healthPoints = this.healthPointsMax = hp;
             this.manaPoints = this.manaPointsMax = mp;
+
             this.strPoints = str;
             this.dexPoints = dex;
             this.intPoints = intP;
             this.lckPoints = lck;
+            this.wisPoints = wis;
             this.defPoints = def;
+
+            this.accuracyPoints = acc;
+            this.passiveDodgePoints = dodge;
+
             this.mapLocation.X = locX;
             this.mapLocation.Y = locY;
+        }
+
+        //Taking hits
+        public virtual void IncHp(int val) {
+
+        }
+        public virtual void IncMp(int val) {
+
+        }
+        public virtual void IDied() {
+
         }
     }
 }
