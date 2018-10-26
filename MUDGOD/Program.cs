@@ -17,6 +17,7 @@ namespace MUDGOD {
         private DiscordSocketClient Client;
         private CommandService Commands;
         private TOKEN tokenFile = new TOKEN();
+        private static readonly string commandPrefix = "^";
 
         static void Main(string[] args)
             => new Program().MainAsync().GetAwaiter().GetResult();
@@ -52,9 +53,23 @@ namespace MUDGOD {
             await Client.SetGameAsync("your mother", "https://github.com/AlexGowans/MUDGOD", StreamType.NotStreaming); //Set Bot User now playing status
         }
 
-        private async Task Client_MessageReceived(SocketMessage arg) {
+        private async Task Client_MessageReceived(SocketMessage messageParam) {
             //Configure the commands
-            throw new NotImplementedException();
+            var message = messageParam as SocketUserMessage;
+            var context = new SocketCommandContext(Client, message);
+
+            if (context.Message == null || context.Message.Content == "") return;   //empty message? cant be a command
+            if (context.User.IsBot) return;                                         //Ignore bots
+
+            //If it's not a mention or doesn't have the command prefix, its not a command
+            int argPos = 0;
+            if (!(message.HasStringPrefix(commandPrefix, ref argPos) || message.HasMentionPrefix(Client.CurrentUser, ref argPos))) return;
+
+            var result = await Commands.ExecuteAsync(context, argPos);
+            if (!result.IsSuccess) {
+                //Debug
+                Console.WriteLine($"{DateTime.Now}: Error executing a command\nUser: {context.Message.Content}\nError{result.ErrorReason}");
+            }
         }
 
 
