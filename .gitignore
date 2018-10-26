@@ -2,3 +2,4 @@
 /.vs/MUDGOD/v15
 /MUDGOD/bin/Debug/netcoreapp2.1
 /MUDGOD/Data/TOKEN.cs
+/MUDGOD/Core/TOKEN
