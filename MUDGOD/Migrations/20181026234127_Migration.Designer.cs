@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MUDGOD.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    [Migration("20181026232024_Migration")]
+    [Migration("20181026234127_Migration")]
     partial class Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

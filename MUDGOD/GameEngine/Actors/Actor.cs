@@ -9,7 +9,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace MUDGOD{
-    class Actor {
+    public class Actor {
         public string name  { get; set; }
         public int bodySize { get; set; } //0-5?
         public int level    { get; set; }

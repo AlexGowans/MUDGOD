@@ -15,7 +15,7 @@ using Discord.Commands;
 using System.ComponentModel.DataAnnotations;
 
 namespace MUDGOD {
-    class PlayerCharacter : Actor {
+    public class PlayerCharacter : Actor {
         
 
         //Player Info
@@ -70,7 +70,7 @@ namespace MUDGOD {
             locationX = locX;
             locationY = locY;
         }
-        protected PlayerCharacter() { }
+        protected PlayerCharacter() { } //This is to allow the database to work, bug in current software 
 
 
         //Getting player stats after mods

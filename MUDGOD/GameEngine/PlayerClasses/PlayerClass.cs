@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace MUDGOD {
-    class PlayerClass {
+    public class PlayerClass {
         [Key]
         public int id             { get; set; } //id# of class
         public string name        { get; set; }
@@ -37,7 +37,7 @@ namespace MUDGOD {
             lckMulti = lck;
             defMulti = def;
         }
-        protected PlayerClass() { }
+        protected PlayerClass() { } //This is to allow the database to work, bug in current software
     }
 
 

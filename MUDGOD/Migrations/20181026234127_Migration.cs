@@ -2,7 +2,7 @@
 
 namespace MUDGOD.Migrations
 {
-    public partial class Migration : Migration
+    public partial class Migration : Microsoft.EntityFrameworkCore.Migrations.Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
