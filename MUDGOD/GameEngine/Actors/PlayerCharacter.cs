@@ -82,10 +82,13 @@ namespace MUDGOD {
             return (int)me;
         }
 
-        //Taking hits
+        //Taking hits //Overrides from Actor to use modified HpMax()
         public override void IncHp(int val) {
-            healthPoints += val;
-            if (healthPoints > HpMax()) healthPoints = HpMax();
+            healthPoints += val;    //increment
+            if (healthPoints > HpMax()) healthPoints = HpMax(); //Check not above max
+            if (healthPoints <= 0) {                            //Check for death
+
+            }
         } 
         public override void IncMp(int val) {
 
