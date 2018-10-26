@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="Core\Data\" />
     <Folder Include="GameEngine\GameCommands\" />
-    <Folder Include="GameEngine\Actors\" />
     <Folder Include="Resources\Database\" />
     <Folder Include="Resources\Datatypes\" />
     <Folder Include="Resources\Extentions\" />
