@@ -27,7 +27,7 @@ namespace MUDGOD {
         int rangerLevel;
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(PlayerClass myClass, int id, string playerName = "No User", string name = "No-name",
+        public PlayerCharacter( int id, string playerName, string name, PlayerClass myClass,
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int level = 1,
                                 int hp = 100, int mp = 100,
