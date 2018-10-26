@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using Discord;
+using Discord.Commands;
+
 namespace MUDGOD {
     class PlayerCharacter : Actor {
         //Player Info
@@ -53,9 +56,9 @@ namespace MUDGOD {
             float me = healthPointsMax * myClass.hpMulti;
             return (int)me;
         }
-        public float MpMax() {
+        public int MpMax() {
             float me = manaPointsMax * myClass.mpMulti;
-            return me;
+            return (int)me;
         }
         public int Strength() {
             float me = strPoints * myClass.strMulti;
@@ -87,14 +90,18 @@ namespace MUDGOD {
             healthPoints += val;    //increment
             if (healthPoints > HpMax()) healthPoints = HpMax(); //Check not above max
             if (healthPoints <= 0) {                            //Check for death
-
+                healthPoints = 0;
+                IDied();
             }
         } 
         public override void IncMp(int val) {
-
+            manaPoints += val;    //increment
+            if (manaPoints > MpMax()) manaPoints = MpMax(); //Check not above max
+            if (manaPoints <= 0) manaPoints = 0;
         }
         public override void IDied() {
-
+            //How to send message to default channel? Context throws an error even when public async override
+            //await Context.Channel.SendMessageAsync("Hello World");
         }
         //Target Stuff
         public float RollToHit() {  //this will have to be compared against the targets passive dodge
