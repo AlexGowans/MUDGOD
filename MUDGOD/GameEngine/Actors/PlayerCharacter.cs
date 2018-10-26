@@ -18,16 +18,30 @@ namespace MUDGOD {
         //Player Info
         public int playerId;
         public string playerName; //the name of the user, not character, that is in Actor name
-
-
         public PlayerClass myClass;
 
+        //Unlocked classes - used for trying to change class
+        bool unlockedPeasant;
+        bool unlockedFighter;
+        bool unlockedMagician;
+        bool unlockedRanger;
+
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(PlayerClass myClass,int id,string playerName = "No User", string name = "No-name",
+        public PlayerCharacter(PlayerClass myClass, int id, string playerName = "No User", string name = "No-name",
+                                bool peasant = true, bool fighter = false, bool magician = false, bool ranger = false,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10,int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
                                 int locX = 0, int locY = 0) {
+            this.playerId   = id;
+            this.playerName = name;
+            this.myClass    = myClass;
+
+            this.unlockedPeasant  = peasant;
+            this.unlockedFighter  = fighter;
+            this.unlockedMagician = magician;
+            this.unlockedRanger   = ranger;
+
             this.name = name;
             this.bodySize = size;
             this.healthPoints = this.healthPointsMax = hp;
@@ -44,11 +58,7 @@ namespace MUDGOD {
             this.passiveDodgePoints = dodge;
 
             this.mapLocation.X = locX;
-            this.mapLocation.Y = locY;
-
-            this.playerId = id;
-            this.playerName = name;
-            this.myClass = myClass;
+            this.mapLocation.Y = locY;            
         }
 
         //Getting player stats after mods
