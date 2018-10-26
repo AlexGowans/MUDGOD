@@ -19,8 +19,6 @@ namespace MUDGOD {
         private TOKEN tokenFile = new TOKEN();
         private static readonly string commandPrefix = "^";
 
-        
-        //Actor blep = new Actor(name: "poo", str: 100);
 
         static void Main(string[] args)
             => new Program().MainAsync().GetAwaiter().GetResult();
@@ -47,8 +45,9 @@ namespace MUDGOD {
 
             await Task.Delay(-1);           //Wait for a task forever
 
-            
+            PlayerCharacter steve = new PlayerCharacter(new PeasantClass(), name: "Steve");
         }
+
 
 
 
