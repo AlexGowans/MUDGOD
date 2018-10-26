@@ -130,8 +130,9 @@ namespace MUDGOD {
 
 
         //Class setting
-        public void SetClassLevel() {   //Run this after changing class
-            if (myClass.name == "Peasant") {
+        //Expand for comments
+        public void SetClassLevel() {           //Run this after changing class --> might only need to be ran in init where we dont know which class we are getting
+            if (myClass.name == "Peasant") {    //but during a manual change we do so could just set the level when we call the constructor
                 myClass.level = peasantLevel;
             }
             if (myClass.name == "Fighter") {
