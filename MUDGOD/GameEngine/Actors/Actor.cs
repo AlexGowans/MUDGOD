@@ -29,6 +29,8 @@ namespace MUDGOD{
         public int accuracyPoints;      //kind of like attack in dnd, add d20 roll and compare to target passive dodge
         public int passiveDodgePoints;
 
+        public int currency;
+
         public Vector2 mapLocation = new Vector2(0,0);
 
         //INITIALISE
@@ -36,6 +38,7 @@ namespace MUDGOD{
                                 int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
+                                int currency = 0,
                                 int locX = 0, int locY = 0) {
             this.name = name;
             this.bodySize = size;
@@ -53,6 +56,8 @@ namespace MUDGOD{
 
             this.accuracyPoints = acc;
             this.passiveDodgePoints = dodge;
+
+            this.currency = currency;
 
             this.mapLocation.X = locX;
             this.mapLocation.Y = locY;

@@ -17,10 +17,10 @@ namespace MUDGOD {
     class PlayerCharacter : Actor {
         //Player Info
         public int playerId;
-        public string playerName; //the name of the user, not character, that is in Actor name
+        public string playerName; //the name of the user, not character, that is in Actor and simply called name
         public PlayerClass myClass;
 
-        //Class levels : 0 = not unlocked yet
+        //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
         int peasantLevel;
         int fighterLevel;
         int magicianLevel;
@@ -31,8 +31,9 @@ namespace MUDGOD {
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int level = 1,
                                 int hp = 100, int mp = 100,
-                                int str = 10, int dex = 10, int intP = 10,int wis = 10, int lck = 10, int def = 10,
+                                int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
+                                int currency = 0,
                                 int locX = 0, int locY = 0) {
             this.playerId   = id;
             this.playerName = name;
@@ -59,6 +60,8 @@ namespace MUDGOD {
 
             this.accuracyPoints = acc;
             this.passiveDodgePoints = dodge;
+
+            this.currency = currency;
 
             this.mapLocation.X = locX;
             this.mapLocation.Y = locY;            
