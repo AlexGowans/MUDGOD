@@ -8,7 +8,7 @@ using Discord.Commands;
 
 namespace MUDGOD {
     class gameManager : ModuleBase<SocketCommandContext> {
-        public PlayerCharacter[] playerList;   //this is our player list, load into it on startup, then add into it during registration
+        //public PlayerCharacter[] playerList;   //this is our player list, load into it on startup, then add into it during registration
 
         [Command("register"), Summary("Register a new player")]
         public async Task Register() {

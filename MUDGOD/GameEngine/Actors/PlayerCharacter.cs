@@ -12,60 +12,66 @@ using System.Text;
 
 using Discord;
 using Discord.Commands;
+using System.ComponentModel.DataAnnotations;
 
 namespace MUDGOD {
     class PlayerCharacter : Actor {
+        
+
         //Player Info
-        public int playerId;
-        public string playerName; //the name of the user, not character, that is in Actor and simply called name
-        public PlayerClass myClass;
+        [Key]
+        public int playerId        { get; set; }
+        public string playerName   { get; set; } //the name of the user, not character, that is in Actor and simply called name
+        public PlayerClass myClass { get; set; }
 
         //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
-        int peasantLevel;
-        int fighterLevel;
-        int magicianLevel;
-        int rangerLevel;
+        int peasantLevel  { get; set; }
+        int fighterLevel  { get; set; }
+        int magicianLevel { get; set; }
+        int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter( int id, string playerName, string name, PlayerClass myClass,
+        public PlayerCharacter(int id, string plrNme, string nme, PlayerClass myCls,
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
-                                int size = 1, int level = 1,
+                                int size = 1, int lev = 1,
                                 int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
-                                int currency = 0,
+                                int crncy = 0,
                                 int locX = 0, int locY = 0) {
-            this.playerId   = id;
-            this.playerName = name;
-            this.level      = level;
+            playerId = id;
+            playerName = plrNme;
+            level = level;
 
-            this.myClass    = myClass;      //set the class
-            this.peasantLevel  = peasant;   //get default levels for your classes
-            this.fighterLevel  = fighter;
-            this.magicianLevel = magician;
-            this.rangerLevel   = ranger;
+            myClass = myCls;      //set the class
+            peasantLevel = peasant;   //get default levels for your classes
+            fighterLevel = fighter;
+            magicianLevel = magician;
+            rangerLevel = ranger;
             SetClassLevel();                //Set myClass.level to appropriate int, do this everytime you change class
 
-            this.name = name;
-            this.bodySize = size;
-            this.healthPoints = this.healthPointsMax = hp;
-            this.manaPoints = this.manaPointsMax = mp;
+            name = nme;
+            bodySize = size;
+            healthPoints = healthPointsMax = hp;
+            manaPoints = manaPointsMax = mp;
 
-            this.strPoints = str;
-            this.dexPoints = dex;
-            this.intPoints = intP;
-            this.wisPoints = wis;
-            this.lckPoints = lck;
-            this.defPoints = def;
+            strPoints = str;
+            dexPoints = dex;
+            intPoints = intP;
+            wisPoints = wis;
+            lckPoints = lck;
+            defPoints = def;
 
-            this.accuracyPoints = acc;
-            this.passiveDodgePoints = dodge;
+            accuracyPoints = acc;
+            passiveDodgePoints = dodge;
 
-            this.currency = currency;
+            currency = crncy;
 
-            this.mapLocation.X = locX;
-            this.mapLocation.Y = locY;            
+            locationX = locX;
+            locationY = locY;
         }
+        protected PlayerCharacter() { }
+
 
         //Getting player stats after mods
         public int HpMax() {
