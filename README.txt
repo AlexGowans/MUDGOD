@@ -1,5 +1,8 @@
 Welcome to MUDGOD
 
+*If you add stats to the PlayerCharacter class remember to update the database
+I believe all you have to do is open the "Package Manager Console" in VS then enter "update-database"
+
 program.cs : initialise the bot and wait for commands
 
 

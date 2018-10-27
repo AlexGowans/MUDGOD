@@ -20,7 +20,7 @@ namespace MUDGOD.Core.Commands {
     public class ExampleGroupCommands : ModuleBase<SocketCommandContext> {
         //GROUPS] Example of group commands
         [Group("currency"),Alias("money"), Summary("Example store")]
-        public class ExampleGroupCommandsGroup : ModuleBase<ShardedCommandContext> {
+        public class ExampleGroupCommandsGroup : ModuleBase<SocketCommandContext> {
             //^currency || ^money || ^gold
             [Command(""),Alias("gold"),Summary("Example store")]
             public async Task Currency() {

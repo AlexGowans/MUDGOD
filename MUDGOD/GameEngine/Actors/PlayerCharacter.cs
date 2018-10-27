@@ -20,7 +20,7 @@ namespace MUDGOD {
 
         //Player Info
         [Key]
-        public int playerId        { get; set; }
+        public ulong playerId      { get; set; }
         public string playerName   { get; set; } //the name of the user, not character, that is in Actor and simply called name
         public PlayerClass myClass { get; set; }
 
@@ -31,7 +31,7 @@ namespace MUDGOD {
         int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(int id, string plrNme, string nme, PlayerClass myCls,
+        public PlayerCharacter(ulong id, string plrNme, string nme, PlayerClass myCls,
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int lev = 1,
                                 int hp = 100, int mp = 100,
