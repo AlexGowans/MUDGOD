@@ -16,7 +16,7 @@ using Discord.Commands;
 
 
 namespace MUDGOD.Core.Commands {
-    public class cmdHelloWorld : ModuleBase<SocketCommandContext> {
+    public class ExampleCommands : ModuleBase<SocketCommandContext> {
 
         //HELLO
         [Command("hello"), AliasAttribute("helloworld", "world"), Summary("Hello World command")]
