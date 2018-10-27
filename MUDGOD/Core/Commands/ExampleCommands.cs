@@ -37,5 +37,32 @@ namespace MUDGOD.Core.Commands {
 
             await Context.Channel.SendMessageAsync("", false, Embed.Build());
         }
+
+        //getting the sent message, getting the user who sent it
+        [Command("repeat"), Summary("Repeats what you tell it")]
+        public async Task example([Remainder]string message) {
+            await Context.Channel.SendMessageAsync($"Message: {message} : by {Context.User.Username}");
+        }
+
+
     }
 }
+
+
+/*Useful information
+ *
+ * 
+ * public async Task example([Remainder]string message){
+ *      await Context.Channel.SendMessageAsync($"Message: {message} : by {Context.User.Username)");
+ * 
+ * 
+ * }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

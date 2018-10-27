@@ -18,6 +18,7 @@ namespace MUDGOD {
         private CommandService Commands;
         private TOKEN tokenFile = new TOKEN();  //Core/TOKEN/TOKEN.cs  add this file w a public string 'token'
         private static readonly string commandPrefix = "^";
+        public static readonly string mudgodName = "THE ECET"; //Name your MUDGOD will appear as "Name MUDGOD" on register 
 
 
         static void Main(string[] args) {

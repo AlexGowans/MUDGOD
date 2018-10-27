@@ -5,14 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
-namespace MUDGOD {
-    class gameManager : ModuleBase<SocketCommandContext> {
-        //public PlayerCharacter[] playerList;   //this is our player list, load into it on startup, then add into it during registration
+
+
+namespace MUDGOD.GameEngine.GameCommands {
+    public class gameManager : ModuleBase<SocketCommandContext> {
 
         [Command("register"), Summary("Register a new player")]
         public async Task Register() {
-            
+            //Check they aren't already registered
+            if (Data.SaveLoad.CheckPlayerIsRegistered(Context.User.Id)) {
+                await Context.Channel.SendMessageAsync($"You are already registered silly");
+                return;
+            }
+            await Context.Channel.SendMessageAsync($"Welcome to {Program.mudgodName} MUDGOD.\n Register? Say **yes**");
         }
     }
 }

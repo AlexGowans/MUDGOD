@@ -25,10 +25,10 @@ namespace MUDGOD {
         public PlayerClass myClass { get; set; }
 
         //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
-        int peasantLevel  { get; set; }
-        int fighterLevel  { get; set; }
-        int magicianLevel { get; set; }
-        int rangerLevel   { get; set; }
+        public int peasantLevel  { get; set; }
+        public int fighterLevel  { get; set; }
+        public int magicianLevel { get; set; }
+        public int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
         public PlayerCharacter(ulong id, string plrNme, string nme, PlayerClass myCls,

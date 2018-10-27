@@ -5,6 +5,9 @@
  
  */
 
+
+
+ /*
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,12 +24,12 @@ namespace MUDGOD.Core.Commands {
         //GROUPS] Example of group commands
         [Group("currency"),Alias("money"), Summary("Example store")]
         public class ExampleGroupCommandsGroup : ModuleBase<SocketCommandContext> {
-            //^currency || ^money || ^gold
+            //^currency || ^money || ^currency gold || ^money gold
             [Command(""),Alias("gold"),Summary("Example store")]
             public async Task Currency() {
                 await Context.Channel.SendMessageAsync("This is a test command");
             }
-            //^store buy || ^money buy || ^gold buy
+            //^currency || ^money buy || ^gold buy
             [Command("give"), Alias("gift"), Summary("Buy things")]
             public async Task GiveCurrency(IUser user = null, int amount = 0) {//Get a user that's been tagged and an in, AFTER ^currency give
                 //Checks
@@ -38,7 +41,7 @@ namespace MUDGOD.Core.Commands {
                     return;
                 }
                 //User has enough money
-                if (amount == 0) {
+                if (amount <= 0) {
                     await Context.Channel.SendMessageAsync("You can't give someone nothing] @user **amount**");
                     return;
                 }
@@ -47,7 +50,7 @@ namespace MUDGOD.Core.Commands {
                 if(!User1.GuildPermissions.Administrator){
                     return;
                 }
-                */
+                *\/
 
                 //Now we know we can go ahead with the trade now
                 //Do the thing
@@ -64,3 +67,6 @@ namespace MUDGOD.Core.Commands {
         }
     }
 }
+
+
+*/

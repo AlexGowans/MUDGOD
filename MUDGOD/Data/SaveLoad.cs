@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MUDGOD.Resources.Database;
 
 
-namespace MUDGOD.Core.SaveLoad {
+namespace MUDGOD.Data{
     public static class SaveLoad {
 
         public static PlayerCharacter GetPlayerCharacter(ulong userId) {
@@ -17,7 +17,7 @@ namespace MUDGOD.Core.SaveLoad {
             }
         }
 
-        public static async void SavePlayerCharacter(ulong userID, PlayerCharacter newPC) {
+        public static async Task SavePlayerCharacter(ulong userID, PlayerCharacter newPC) {
             using (var dbContex = new SqliteDbContext()) {
                 //If there are no entries in the database with this user id then make one
                 if (dbContex.playerList.Where(x => x.playerId == userID).Count() < 1) {
@@ -29,6 +29,15 @@ namespace MUDGOD.Core.SaveLoad {
                     dbContex.playerList.Update(newPC);
                 }
                 await dbContex.SaveChangesAsync();
+            }
+        }
+
+        public static bool CheckPlayerIsRegistered(ulong userId) {
+            using (var dbContext = new SqliteDbContext()) {
+                //Check that the user id exists
+                if (dbContext.playerList.Where(x => x.playerId == userId).Count() < 1) return false;
+                //It does, return true
+                return true;
             }
         }
     }

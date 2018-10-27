@@ -1,0 +1,10 @@
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.csproj.CoreCompileInputs.cache
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.AssemblyInfoInputs.cache
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.AssemblyInfo.cs
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\x64\Debug\netcoreapp2.1\MUDGOD.deps.json
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\x64\Debug\netcoreapp2.1\MUDGOD.runtimeconfig.json
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\x64\Debug\netcoreapp2.1\MUDGOD.runtimeconfig.dev.json
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\x64\Debug\netcoreapp2.1\MUDGOD.dll
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\bin\x64\Debug\netcoreapp2.1\MUDGOD.pdb
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.dll
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.pdb
