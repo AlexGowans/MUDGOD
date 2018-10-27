@@ -12,19 +12,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
 
 
 namespace MUDGOD.Core.Commands {
     public class ExampleCommands : ModuleBase<SocketCommandContext> {
 
-        //HELLO
+        //HELLO] Basic bot speech on command, alias'
         [Command("hello"), AliasAttribute("helloworld", "world"), Summary("Hello World command")]
         public async Task Hello() {
             await Context.Channel.SendMessageAsync("Hello World");
         }
-
-        //EMBED
+        //EMBED] Embed example
         [Command("embed"), Summary("Embedding example")]
         public async Task Embed([Remainder]string input = "None") {
             EmbedBuilder Embed = new EmbedBuilder();

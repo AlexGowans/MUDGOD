@@ -20,8 +20,9 @@ namespace MUDGOD {
         private static readonly string commandPrefix = "^";
 
 
-        static void Main(string[] args)
-            => new Program().MainAsync().GetAwaiter().GetResult();
+        static void Main(string[] args) {
+            new Program().MainAsync().GetAwaiter().GetResult();
+        }
 
         private async Task MainAsync() {
             Client = new DiscordSocketClient(new DiscordSocketConfig {
