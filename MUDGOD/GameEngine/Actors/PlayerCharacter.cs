@@ -136,6 +136,10 @@ namespace MUDGOD {
             if (acc > passiveDodgePoints) return true;  //return true if an attack hits you  
             return false;                               //otherwise return false
         }
+        public bool CheckInRange(Actor target, int range) {
+            if (Math.Abs(target.locationX - locationX) <= range) return true;
+            return false;
+        }
 
 
         //Class setting

@@ -42,6 +42,8 @@ namespace MUDGOD.Core.Commands {
         [Command("repeat"), Summary("Repeats what you tell it")]
         public async Task example([Remainder]string message) {
             await Context.Channel.SendMessageAsync($"Message: {message} : by {Context.User.Username}");
+
+            
         }
 
 

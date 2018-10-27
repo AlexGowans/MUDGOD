@@ -12,6 +12,9 @@ using Discord.WebSocket;
 namespace MUDGOD.GameEngine.GameCommands {
     public class gameManager : ModuleBase<SocketCommandContext> {
 
+        string answer; //for user responses
+
+
         [Command("register"), Summary("Register a new player")]
         public async Task Register() {
             //Check they aren't already registered
@@ -20,6 +23,7 @@ namespace MUDGOD.GameEngine.GameCommands {
                 return;
             }
             await Context.Channel.SendMessageAsync($"Welcome to {Program.mudgodName} MUDGOD.\n Register? Say **yes**");
+
         }
     }
 }
