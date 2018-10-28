@@ -17,12 +17,20 @@ namespace MUDGOD.GameEngine.GameCommands {
 
         [Command("register"), Summary("Register a new player")]
         public async Task Register() {
+            ulong id = Context.User.Id;
             //Check they aren't already registered
-            if (Data.SaveLoad.CheckPlayerIsRegistered(Context.User.Id)) {
+            if (Data.SaveLoad.CheckPlayerIsRegistered(id)) {
                 await Context.Channel.SendMessageAsync($"You are already registered silly");
                 return;
             }
             await Context.Channel.SendMessageAsync($"Welcome to {Program.mudgodName} MUDGOD.\n Register? Say **yes**");
+
+            
+
+
+            if (answer == "yes") {
+                await Context.Channel.SendMessageAsync($"Ok got this far");
+            }
 
         }
     }
