@@ -19,7 +19,7 @@ namespace MUDGOD.GameEngine.GameCommands {
         string answer; //for user responses
 
 
-        [Command("register"), Summary("Register a new player")]
+        [Command("register", RunMode = RunMode.Async), Summary("Register a new player")]
         public async Task Register() {
             ulong id = Context.User.Id;
             //Check they aren't already registered

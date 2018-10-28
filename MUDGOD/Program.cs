@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 
 using Discord;
 using Discord.Commands;
+using Discord.Addons.Interactive;
+using Microsoft.Extensions.DependencyInjection;
 using Discord.WebSocket;
 
 namespace MUDGOD {
     class Program {
         private DiscordSocketClient Client;
         private CommandService Commands;
+        private IServiceProvider Services;
         private TOKEN tokenFile = new TOKEN();  //Core/TOKEN/TOKEN.cs  add this file w a public string 'token'
         private static readonly string commandPrefix = "^";
         public static readonly string mudgodName = "THE ECET"; //Name your MUDGOD will appear as "Name MUDGOD" on register 
@@ -29,6 +32,11 @@ namespace MUDGOD {
             Client = new DiscordSocketClient(new DiscordSocketConfig {
                 LogLevel = LogSeverity.Debug
             });
+
+            Services = new ServiceCollection()
+                .AddSingleton(Client)
+                .AddSingleton<InteractiveService>()
+                .BuildServiceProvider();
 
             Commands = new CommandService(new CommandServiceConfig {
                 CaseSensitiveCommands = true,
@@ -78,7 +86,7 @@ namespace MUDGOD {
             int argPos = 0;
             if (!(message.HasStringPrefix(commandPrefix, ref argPos) || message.HasMentionPrefix(Client.CurrentUser, ref argPos))) return;
 
-            var result = await Commands.ExecuteAsync(context, argPos);
+            var result = await Commands.ExecuteAsync(context, argPos, Services);
             if (!result.IsSuccess) {
                 //Debug
                 Console.WriteLine($"{DateTime.Now}: Error executing a command\nUser: {context.Message.Content}\nError{result.ErrorReason}");
