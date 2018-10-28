@@ -30,6 +30,28 @@ namespace MUDGOD.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlayerRace",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    name = table.Column<string>(nullable: true),
+                    description = table.Column<string>(nullable: true),
+                    hpMulti = table.Column<float>(nullable: false),
+                    mpMulti = table.Column<float>(nullable: false),
+                    strMulti = table.Column<float>(nullable: false),
+                    dexMulti = table.Column<float>(nullable: false),
+                    intMulti = table.Column<float>(nullable: false),
+                    wisMulti = table.Column<float>(nullable: false),
+                    lckMulti = table.Column<float>(nullable: false),
+                    defMulti = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayerRace", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "playerList",
                 columns: table => new
                 {
@@ -51,10 +73,15 @@ namespace MUDGOD.Migrations
                     currency = table.Column<int>(nullable: false),
                     locationX = table.Column<int>(nullable: false),
                     locationY = table.Column<int>(nullable: false),
-                    playerId = table.Column<int>(nullable: false)
+                    playerId = table.Column<ulong>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     playerName = table.Column<string>(nullable: true),
-                    myClassid = table.Column<int>(nullable: true)
+                    myClassid = table.Column<int>(nullable: true),
+                    myRaceid = table.Column<int>(nullable: true),
+                    peasantLevel = table.Column<int>(nullable: false),
+                    fighterLevel = table.Column<int>(nullable: false),
+                    magicianLevel = table.Column<int>(nullable: false),
+                    rangerLevel = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,12 +92,23 @@ namespace MUDGOD.Migrations
                         principalTable: "PlayerClass",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_playerList_PlayerRace_myRaceid",
+                        column: x => x.myRaceid,
+                        principalTable: "PlayerRace",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_playerList_myClassid",
                 table: "playerList",
                 column: "myClassid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_playerList_myRaceid",
+                table: "playerList",
+                column: "myRaceid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -80,6 +118,9 @@ namespace MUDGOD.Migrations
 
             migrationBuilder.DropTable(
                 name: "PlayerClass");
+
+            migrationBuilder.DropTable(
+                name: "PlayerRace");
         }
     }
 }

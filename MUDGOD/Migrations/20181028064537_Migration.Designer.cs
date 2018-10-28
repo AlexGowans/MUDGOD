@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MUDGOD.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    [Migration("20181026234127_Migration")]
+    [Migration("20181028064537_Migration")]
     partial class Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace MUDGOD.Migrations
 
             modelBuilder.Entity("MUDGOD.PlayerCharacter", b =>
                 {
-                    b.Property<int>("playerId")
+                    b.Property<ulong>("playerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("accuracyPoints");
@@ -32,6 +32,8 @@ namespace MUDGOD.Migrations
                     b.Property<int>("defPoints");
 
                     b.Property<int>("dexPoints");
+
+                    b.Property<int>("fighterLevel");
 
                     b.Property<int>("healthPoints");
 
@@ -47,17 +49,25 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("locationY");
 
+                    b.Property<int>("magicianLevel");
+
                     b.Property<int>("manaPoints");
 
                     b.Property<int>("manaPointsMax");
 
                     b.Property<int?>("myClassid");
 
+                    b.Property<int?>("myRaceid");
+
                     b.Property<string>("name");
 
                     b.Property<int>("passiveDodgePoints");
 
+                    b.Property<int>("peasantLevel");
+
                     b.Property<string>("playerName");
+
+                    b.Property<int>("rangerLevel");
 
                     b.Property<int>("strPoints");
 
@@ -66,6 +76,8 @@ namespace MUDGOD.Migrations
                     b.HasKey("playerId");
 
                     b.HasIndex("myClassid");
+
+                    b.HasIndex("myRaceid");
 
                     b.ToTable("playerList");
                 });
@@ -102,11 +114,45 @@ namespace MUDGOD.Migrations
                     b.ToTable("PlayerClass");
                 });
 
+            modelBuilder.Entity("MUDGOD.PlayerRace", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("defMulti");
+
+                    b.Property<string>("description");
+
+                    b.Property<float>("dexMulti");
+
+                    b.Property<float>("hpMulti");
+
+                    b.Property<float>("intMulti");
+
+                    b.Property<float>("lckMulti");
+
+                    b.Property<float>("mpMulti");
+
+                    b.Property<string>("name");
+
+                    b.Property<float>("strMulti");
+
+                    b.Property<float>("wisMulti");
+
+                    b.HasKey("id");
+
+                    b.ToTable("PlayerRace");
+                });
+
             modelBuilder.Entity("MUDGOD.PlayerCharacter", b =>
                 {
                     b.HasOne("MUDGOD.PlayerClass", "myClass")
                         .WithMany()
                         .HasForeignKey("myClassid");
+
+                    b.HasOne("MUDGOD.PlayerRace", "myRace")
+                        .WithMany()
+                        .HasForeignKey("myRaceid");
                 });
 #pragma warning restore 612, 618
         }
