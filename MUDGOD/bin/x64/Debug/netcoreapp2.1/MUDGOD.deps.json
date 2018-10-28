@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "b76e5d83f514fe0503a802de0307afef8bd7a837"
+    "signature": "af575b3366eb9e1ed88455c77b64b387098a1ff3"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "MUDGOD/1.0.0": {
         "dependencies": {
+          "Discord.Addons.Interactive": "1.0.1",
           "Discord.Net": "1.0.2",
           "Microsoft.EntityFrameworkCore": "2.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.4",
@@ -16,6 +17,18 @@
         },
         "runtime": {
           "MUDGOD.dll": {}
+        }
+      },
+      "Discord.Addons.Interactive/1.0.1": {
+        "dependencies": {
+          "Discord.Net.Commands": "1.0.2",
+          "Discord.Net.WebSocket": "1.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Discord.Addons.Interactive.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
         }
       },
       "Discord.Net/1.0.2": {
@@ -1381,6 +1394,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Discord.Addons.Interactive/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jpLtwySgRtkng2DVu8Q0ZKQjCUW9WpxEJ62eqwO1LYmnqrnhFl0mbRz7HlJCJiWay4FsS3vap3pixW+sXE4Y+Q==",
+      "path": "discord.addons.interactive/1.0.1",
+      "hashPath": "discord.addons.interactive.1.0.1.nupkg.sha512"
     },
     "Discord.Net/1.0.2": {
       "type": "package",

@@ -4,14 +4,18 @@ using System.Text;
 
 using System.Threading.Tasks;
 using Discord;
+using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 
 
 
-namespace MUDGOD.GameEngine.GameCommands {
-    public class gameManager : ModuleBase<SocketCommandContext> {
 
+namespace MUDGOD.GameEngine.GameCommands {
+    public class GameManager : InteractiveBase {
+
+
+        TimeSpan responseTime = new TimeSpan(0,0,10);   //Time to alot the player to respond
         string answer; //for user responses
 
 
@@ -25,9 +29,8 @@ namespace MUDGOD.GameEngine.GameCommands {
             }
             await Context.Channel.SendMessageAsync($"Welcome to {Program.mudgodName} MUDGOD.\n Register? Say **yes**");
 
-            
-
-
+            var response = await NextMessageAsync(true,true, responseTime); //true/true : SameUsed/SameChannel
+            answer = response.Content;
             if (answer == "yes") {
                 await Context.Channel.SendMessageAsync($"Ok got this far");
             }
