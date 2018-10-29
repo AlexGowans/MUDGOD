@@ -14,16 +14,21 @@ using Discord;
 using Discord.Commands;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace MUDGOD {
+
     public class PlayerCharacter : Actor {
-        
+
 
         //Player Info
         [Key]
-        public ulong playerId      { get; set; }
-        public string playerName   { get; set; } //the name of the user, not character, that is in Actor and simply called name
+        public ulong playerId { get; set; }
+        public string playerName { get; set; } //the name of the user, not character, that is in Actor and simply called name
+        
         public PlayerClass myClass { get; set; }
         public PlayerRace myRace   { get; set; }
+        public int myClassIdHolder { get; set; } //These two are for the database
+        public int myRaceIdHolder  { get; set; }
 
         //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
         public int peasantLevel  { get; set; }
@@ -32,7 +37,7 @@ namespace MUDGOD {
         public int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(ulong id, string plrNme, string nme, PlayerClass myCls, PlayerRace race,
+        public PlayerCharacter(ulong id, string plrNme, string nme, int clss, int race,
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int lev = 1,
                                 int hp = 100, int mp = 100,
@@ -43,9 +48,11 @@ namespace MUDGOD {
             playerId = id;
             playerName = plrNme;
             level = level;
-            myRace = race;
+            myRaceIdHolder = race;
+            //myRace = PlayerRaceFunctions.GetRace(race);
 
-            myClass = myCls;      //set the class
+            myClassIdHolder = clss;      //set the class
+            //myClass = PlayerClassFunctions.GetClass(clss);
             peasantLevel = peasant;   //get default levels for your classes
             fighterLevel = fighter;
             magicianLevel = magician;
@@ -162,4 +169,9 @@ namespace MUDGOD {
         }
 
     }
+
+
+
+
+
 }

@@ -103,4 +103,19 @@ namespace MUDGOD {
             this.defMulti = 1;
         }
     }
+
+
+
+
+    class PlayerRaceFunctions {
+        public static PlayerRace GetRace(int id) {
+            PlayerRace newClass = new HumanRace();
+            if (id == 0) newClass = new HumanRace();
+            if (id == 1) newClass = new ElfRace();
+            if (id == 2) newClass = new DwarfRace();
+            if (id == 3) newClass = new DragonbornRace();
+
+            return newClass;
+        }
+    }
 }

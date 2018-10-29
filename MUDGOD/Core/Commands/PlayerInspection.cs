@@ -9,12 +9,13 @@ using Discord.Commands;
 using Discord.WebSocket;
 
 
-namespace MUDGOD.GameEngine.GameCommands.PlayerCommands {
-    class PlayerInspection : InteractiveBase {
+namespace MUDGOD.Core.Commands {
+    public class PlayerInspection : InteractiveBase {
 
         //Display the players name, race, and level
-        [Group("inspect")]
+        [Group("inspect"), Alias("Inspect","peek","Peek"),Summary("Please work already")]
         public class PlayerInspectionGroup : InteractiveBase {
+
 
             [Command(""), Alias("Player", "player", "user", "User"), Summary("Display a players Char Name, Race, Class and Level")]
             public async Task InspectPlayer(IUser targetUser = null) {
@@ -30,6 +31,8 @@ namespace MUDGOD.GameEngine.GameCommands.PlayerCommands {
                 ulong targetId;
                 string targetMention;
 
+
+                
                 //Get their character
                 if (targetUser != null) {
                     targetId = targetUser.Id;
@@ -46,17 +49,22 @@ namespace MUDGOD.GameEngine.GameCommands.PlayerCommands {
                     return;
                 }
 
-                PlayerCharacter theInspected = Data.SaveLoad.GetPlayerCharacter(id);
+                PlayerCharacter theInspected = Data.SaveLoad.GetPlayerCharacter(targetId);
 
                 //Display Relevant info
                 await ReplyAsync($"{mention}\nThis is {targetMention}'s Character\n" +
                                 $"Name:  {theInspected.name}\n" +
-                                $"Race:  {theInspected.myRace}\n" +
-                                $"Class: {theInspected.myClass}\n" +
+                                $"Race:  {theInspected.myRace.id}\n" +
+                                $"Class: {theInspected.myClass.id}\n" +
                                 $"Level: {theInspected.level}");
+               
 
             }
 
+            [Command("herro")]
+            public async Task inspectHerro() {
+                await ReplyAsync("test");
+            }
 
 
 
