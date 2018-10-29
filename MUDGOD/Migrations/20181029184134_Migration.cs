@@ -2,14 +2,24 @@
 
 namespace MUDGOD.Migrations
 {
-    public partial class Migrations : Microsoft.EntityFrameworkCore.Migrations.Migration
+    public partial class Migration : Microsoft.EntityFrameworkCore.Migrations.Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.CreateTable(
-                name: "playerList",
-                columns: table => new {
+                name: "playerListDB",
+                columns: table => new
+                {
+                    dbId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    playerId = table.Column<ulong>(nullable: false),
+                    playerName = table.Column<string>(nullable: true),
+                    myClassIdHolder = table.Column<int>(nullable: false),
+                    myRaceIdHolder = table.Column<int>(nullable: false),
+                    peasantLevel = table.Column<int>(nullable: false),
+                    fighterLevel = table.Column<int>(nullable: false),
+                    magicianLevel = table.Column<int>(nullable: false),
+                    rangerLevel = table.Column<int>(nullable: false),
                     name = table.Column<string>(nullable: true),
                     bodySize = table.Column<int>(nullable: false),
                     level = table.Column<int>(nullable: false),
@@ -27,29 +37,18 @@ namespace MUDGOD.Migrations
                     passiveDodgePoints = table.Column<int>(nullable: false),
                     currency = table.Column<int>(nullable: false),
                     locationX = table.Column<int>(nullable: false),
-                    locationY = table.Column<int>(nullable: false),
-                    playerId = table.Column<ulong>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    playerName = table.Column<string>(nullable: true),
-                    //myClassid = table.Column<int>(nullable: true),
-                    //myRaceid = table.Column<int>(nullable: true),
-                    myClassIdHolder = table.Column<int>(nullable: false),
-                    myRaceIdHolder = table.Column<int>(nullable: false),
-                    peasantLevel = table.Column<int>(nullable: false),
-                    fighterLevel = table.Column<int>(nullable: false),
-                    magicianLevel = table.Column<int>(nullable: false),
-                    rangerLevel = table.Column<int>(nullable: false)
+                    locationY = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_playerListDB", x => x.dbId);
                 });
-                
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "playerList");
-
-
+                name: "playerListDB");
         }
     }
 }

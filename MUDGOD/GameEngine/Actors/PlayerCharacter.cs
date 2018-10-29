@@ -21,14 +21,11 @@ namespace MUDGOD {
 
 
         //Player Info
-        [Key]
         public ulong playerId { get; set; }
         public string playerName { get; set; } //the name of the user, not character, that is in Actor and simply called name
         
         public PlayerClass myClass { get; set; }
         public PlayerRace myRace   { get; set; }
-        public int myClassIdHolder { get; set; } //These two are for the database
-        public int myRaceIdHolder  { get; set; }
 
         //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
         public int peasantLevel  { get; set; }
@@ -37,32 +34,34 @@ namespace MUDGOD {
         public int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(ulong id, string plrNme, string nme, int clss, int race,
+        public PlayerCharacter(ulong id, string plrNme, string nme, PlayerClass clss, PlayerRace race,
                                 int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
                                 int size = 1, int lev = 1,
-                                int hp = 100, int mp = 100,
+                                int hpm = 100, int hp = 100,
+                                int mpm = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
                                 int crncy = 0,
                                 int locX = 0, int locY = 0) {
             playerId = id;
             playerName = plrNme;
-            level = level;
-            myRaceIdHolder = race;
-            //myRace = PlayerRaceFunctions.GetRace(race);
 
-            myClassIdHolder = clss;      //set the class
-            //myClass = PlayerClassFunctions.GetClass(clss);
+            
+            myRace = race;
+            myClass = clss;
             peasantLevel = peasant;   //get default levels for your classes
             fighterLevel = fighter;
             magicianLevel = magician;
             rangerLevel = ranger;
             SetClassLevel();                //Set myClass.level to appropriate int, do this everytime you change class
-
+            
             name = nme;
             bodySize = size;
-            healthPoints = healthPointsMax = hp;
-            manaPoints = manaPointsMax = mp;
+            level = level;
+            healthPointsMax = hpm;
+            healthPoints = hp;
+            manaPointsMax = mpm;
+            manaPoints = mp;
 
             strPoints = str;
             dexPoints = dex;
@@ -79,7 +78,7 @@ namespace MUDGOD {
             locationX = locX;
             locationY = locY;
         }
-        protected PlayerCharacter() { } //This is to allow the database to work, bug in current software 
+        //protected PlayerCharacter() { } //This is to allow the database to work, bug in current software 
 
 
         //Getting player stats after mods
@@ -170,6 +169,94 @@ namespace MUDGOD {
 
     }
 
+
+
+
+
+    public class PlayerData {
+        [Key]
+        public int dbId { get; set; }
+        public ulong playerId { get; set; }
+        public string playerName { get; set; } //the name of the user, not character, that is in Actor and simply called name
+
+        public int myClassIdHolder { get; set; } //These two are for the database
+        public int myRaceIdHolder { get; set; }
+
+        //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
+        public int peasantLevel { get; set; }
+        public int fighterLevel { get; set; }
+        public int magicianLevel { get; set; }
+        public int rangerLevel { get; set; }
+
+        public string name { get; set; }
+        public int bodySize { get; set; } //0-5?
+        public int level { get; set; }
+
+        public int healthPointsMax { get; set; }
+        public int healthPoints { get; set; }
+        public int manaPointsMax { get; set; }
+        public int manaPoints { get; set; }
+
+        public int strPoints { get; set; }
+        public int dexPoints { get; set; }
+        public int intPoints { get; set; }//blk mgc
+        public int wisPoints { get; set; }//wht mgc
+        public int lckPoints { get; set; }
+        public int defPoints { get; set; }
+
+        public int accuracyPoints { get; set; }      //kind of like attack in dnd, add d20 roll and compare to target passive dodge
+        public int passiveDodgePoints { get; set; }
+
+        public int currency { get; set; }
+
+        public int locationX { get; set; }
+        public int locationY { get; set; }
+
+        public PlayerData(ulong id, string plrNme, string nme, int clss, int race,
+                                int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
+                                int size = 1, int lev = 1,
+                                int hpm = 100, int hp = 100,
+                                int mpm = 100, int mp = 100,
+                                int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
+                                int acc = 5, int dodge = 15,
+                                int crncy = 0,
+                                int locX = 0, int locY = 0) {
+            playerId = id;
+            playerName = plrNme;
+
+
+            myRaceIdHolder = race;
+            myClassIdHolder = clss;
+            peasantLevel = peasant;   //get default levels for your classes
+            fighterLevel = fighter;
+            magicianLevel = magician;
+            rangerLevel = ranger;
+            
+            name = nme;
+            bodySize = size;
+            level = level;
+            healthPointsMax = hpm;
+            healthPoints = hp;
+            manaPointsMax = mpm;
+            manaPoints = mp;
+
+            strPoints = str;
+            dexPoints = dex;
+            intPoints = intP;
+            wisPoints = wis;
+            lckPoints = lck;
+            defPoints = def;
+
+            accuracyPoints = acc;
+            passiveDodgePoints = dodge;
+
+            currency = crncy;
+
+            locationX = locX;
+            locationY = locY;
+        }
+        protected PlayerData() { } //This is to allow the database to work, bug in current software
+    }
 
 
 
