@@ -21,7 +21,7 @@ namespace MUDGOD {
         public float lckMulti { get; set; }
         public float defMulti { get; set; }
 
-        public PlayerClass(string nme = "No Class", string desc = "No description", int lvl = 1,
+        public PlayerClass( string nme = "No Class", string desc = "No description", int lvl = 1,
                            float hp = 1, float mp = 1,
                            float str = 1, float dex = 1, float intP = 1, float wis = 1, float lck = 1, float def = 1) {
             name = nme;
@@ -102,6 +102,20 @@ namespace MUDGOD {
             this.wisMulti = 0.6f;
             this.lckMulti = 1;
             this.defMulti = 1.1f;
+        }
+    }
+
+
+
+    public class PlayerClassFunctions {
+        public static PlayerClass GetClass(int id) {
+            PlayerClass newClass = new PeasantClass();
+            if (id == 0) newClass = new PeasantClass();
+            if (id == 1) newClass = new FighterClass();
+            if (id == 2) newClass = new MagicianClass();
+            if (id == 3) newClass = new RangerClass();
+
+            return newClass;
         }
     }
 }

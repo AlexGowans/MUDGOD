@@ -7,7 +7,7 @@
 
 
 
- /*
+ 
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -50,7 +50,7 @@ namespace MUDGOD.Core.Commands {
                 if(!User1.GuildPermissions.Administrator){
                     return;
                 }
-                *\/
+                */
 
                 //Now we know we can go ahead with the trade now
                 //Do the thing
@@ -69,4 +69,3 @@ namespace MUDGOD.Core.Commands {
 }
 
 
-*/

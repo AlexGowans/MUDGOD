@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="GameEngine\GameCommands\PlayerCommands\" />
     <Folder Include="Resources\Datatypes\" />
     <Folder Include="Resources\Extentions\" />
   </ItemGroup>

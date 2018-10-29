@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MUDGOD.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    [Migration("20181028064537_Migration")]
-    partial class Migration
+    [Migration("20181029043218_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,11 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("manaPointsMax");
 
+                    b.Property<int>("myClassIdHolder");
+
                     b.Property<int?>("myClassid");
+
+                    b.Property<int>("myRaceIdHolder");
 
                     b.Property<int?>("myRaceid");
 

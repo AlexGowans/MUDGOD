@@ -53,7 +53,11 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("manaPointsMax");
 
+                    b.Property<int>("myClassIdHolder");
+
                     b.Property<int?>("myClassid");
+
+                    b.Property<int>("myRaceIdHolder");
 
                     b.Property<int?>("myRaceid");
 

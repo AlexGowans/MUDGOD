@@ -12,7 +12,10 @@ namespace MUDGOD.Data{
                 //Check that the user id exists
                 if (dbContext.playerList.Where(x => x.playerId == userId).Count() < 1) return null;
                 //Otherwise load and return the PlayerCharacter
-                return dbContext.playerList.Where(x => x.playerId == userId).FirstOrDefault();
+                PlayerCharacter getPC = dbContext.playerList.Where(x => x.playerId == userId).FirstOrDefault();
+                getPC.myClass = PlayerClassFunctions.GetClass(getPC.myClassIdHolder);
+                getPC.myRace = PlayerRaceFunctions.GetRace(getPC.myRaceIdHolder);
+                return getPC;
                 
             }
         }
