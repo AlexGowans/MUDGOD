@@ -6,25 +6,25 @@
  */
 
 using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
 
+using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
 
 
 namespace MUDGOD.Core.Commands {
-    public class cmdHelloWorld : ModuleBase<SocketCommandContext> {
+    public class ExampleCommands : ModuleBase<SocketCommandContext> {
 
-        //HELLO
+        //HELLO] Basic bot speech on command, alias'
         [Command("hello"), AliasAttribute("helloworld", "world"), Summary("Hello World command")]
         public async Task Hello() {
             await Context.Channel.SendMessageAsync("Hello World");
         }
-
-        //EMBED
+        //EMBED] Embed example
         [Command("embed"), Summary("Embedding example")]
         public async Task Embed([Remainder]string input = "None") {
             EmbedBuilder Embed = new EmbedBuilder();
@@ -37,5 +37,34 @@ namespace MUDGOD.Core.Commands {
 
             await Context.Channel.SendMessageAsync("", false, Embed.Build());
         }
+
+        //getting the sent message, getting the user who sent it
+        [Command("repeat"), Summary("Repeats what you tell it")]
+        public async Task example([Remainder]string message) {
+            await Context.Channel.SendMessageAsync($"Message: {message} : by {Context.User.Username}");
+
+            
+        }
+
+
     }
 }
+
+
+/*Useful information
+ *
+ * 
+ * public async Task example([Remainder]string message){
+ *      await Context.Channel.SendMessageAsync($"Message: {message} : by {Context.User.Username)");
+ * 
+ * 
+ * }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

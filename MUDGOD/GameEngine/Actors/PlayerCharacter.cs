@@ -12,44 +12,75 @@ using System.Text;
 
 using Discord;
 using Discord.Commands;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace MUDGOD {
-    class PlayerCharacter : Actor {
+
+    public class PlayerCharacter : Actor {
+
+
         //Player Info
-        public int playerId;
-        public string playerName; //the name of the user, not character, that is in Actor name
+        [Key]
+        public ulong playerId { get; set; }
+        public string playerName { get; set; } //the name of the user, not character, that is in Actor and simply called name
+        
+        public PlayerClass myClass { get; set; }
+        public PlayerRace myRace   { get; set; }
+        public int myClassIdHolder { get; set; } //These two are for the database
+        public int myRaceIdHolder  { get; set; }
 
-
-        public PlayerClass myClass;
+        //Class levels : 0 = not unlocked yet   //Should this be in Actor? Gives NPCs options to have classes too then, or we could give them their own varient of the system?
+        public int peasantLevel  { get; set; }
+        public int fighterLevel  { get; set; }
+        public int magicianLevel { get; set; }
+        public int rangerLevel   { get; set; }
 
         //This constructor comes after the base actor and overwrites it
-        public PlayerCharacter(PlayerClass myClass,int id,string playerName = "No User", string name = "No-name",
-                                int size = 1, int hp = 100, int mp = 100,
-                                int str = 10, int dex = 10, int intP = 10,int wis = 10, int lck = 10, int def = 10,
+        public PlayerCharacter(ulong id, string plrNme, string nme, int clss, int race,
+                                int peasant = 1, int fighter = 0, int magician = 0, int ranger = 0,  //gives us the ability to grant classes right away if we want
+                                int size = 1, int lev = 1,
+                                int hp = 100, int mp = 100,
+                                int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
                                 int acc = 5, int dodge = 15,
+                                int crncy = 0,
                                 int locX = 0, int locY = 0) {
-            this.name = name;
-            this.bodySize = size;
-            this.healthPoints = this.healthPointsMax = hp;
-            this.manaPoints = this.manaPointsMax = mp;
+            playerId = id;
+            playerName = plrNme;
+            level = level;
+            myRaceIdHolder = race;
+            //myRace = PlayerRaceFunctions.GetRace(race);
 
-            this.strPoints = str;
-            this.dexPoints = dex;
-            this.intPoints = intP;
-            this.wisPoints = wis;
-            this.lckPoints = lck;
-            this.defPoints = def;
+            myClassIdHolder = clss;      //set the class
+            //myClass = PlayerClassFunctions.GetClass(clss);
+            peasantLevel = peasant;   //get default levels for your classes
+            fighterLevel = fighter;
+            magicianLevel = magician;
+            rangerLevel = ranger;
+            SetClassLevel();                //Set myClass.level to appropriate int, do this everytime you change class
 
-            this.accuracyPoints = acc;
-            this.passiveDodgePoints = dodge;
+            name = nme;
+            bodySize = size;
+            healthPoints = healthPointsMax = hp;
+            manaPoints = manaPointsMax = mp;
 
-            this.mapLocation.X = locX;
-            this.mapLocation.Y = locY;
+            strPoints = str;
+            dexPoints = dex;
+            intPoints = intP;
+            wisPoints = wis;
+            lckPoints = lck;
+            defPoints = def;
 
-            this.playerId = id;
-            this.playerName = name;
-            this.myClass = myClass;
+            accuracyPoints = acc;
+            passiveDodgePoints = dodge;
+
+            currency = crncy;
+
+            locationX = locX;
+            locationY = locY;
         }
+        protected PlayerCharacter() { } //This is to allow the database to work, bug in current software 
+
 
         //Getting player stats after mods
         public int HpMax() {
@@ -114,5 +145,33 @@ namespace MUDGOD {
             if (acc > passiveDodgePoints) return true;  //return true if an attack hits you  
             return false;                               //otherwise return false
         }
+        public bool CheckInRange(Actor target, int range) {
+            if (Math.Abs(target.locationX - locationX) <= range) return true;
+            return false;
+        }
+
+
+        //Class setting
+        //Expand for comments
+        public void SetClassLevel() {           //Run this after changing class --> might only need to be ran in init where we dont know which class we are getting
+            if (myClass.name == "Peasant") {    //but during a manual change we do so could just set the level when we call the constructor
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Fighter") {
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Magician") {
+                myClass.level = peasantLevel;
+            }
+            if (myClass.name == "Ranger") {
+                myClass.level = peasantLevel;
+            }
+        }
+
     }
+
+
+
+
+
 }

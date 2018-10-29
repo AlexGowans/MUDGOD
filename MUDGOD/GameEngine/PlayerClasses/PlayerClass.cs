@@ -2,43 +2,48 @@
 using System.Collections.Generic;
 using System.Text;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace MUDGOD {
-    class PlayerClass {
-        public string name;
-        public string description;
-        public int level; //class level
+    public class PlayerClass {
+        [Key]
+        public int id             { get; set; } //id# of class
+        public string name        { get; set; }
+        public string description { get; set; }
+        public int level          { get; set; } //class level
 
-        public float hpMulti;
-        public float mpMulti;
-        public float strMulti;
-        public float dexMulti;
-        public float intMulti;
-        public float wisMulti;
-        public float lckMulti;
-        public float defMulti;
+        public float hpMulti  { get; set; }
+        public float mpMulti  { get; set; }
+        public float strMulti { get; set; }
+        public float dexMulti { get; set; }
+        public float intMulti { get; set; }
+        public float wisMulti { get; set; }
+        public float lckMulti { get; set; }
+        public float defMulti { get; set; }
 
-        public PlayerClass(string name = "No Class", string desc = "No description", int level = 1,
+        public PlayerClass( string nme = "No Class", string desc = "No description", int lvl = 1,
                            float hp = 1, float mp = 1,
                            float str = 1, float dex = 1, float intP = 1, float wis = 1, float lck = 1, float def = 1) {
-            this.name = name;
-            this.description = desc;
-            this.level = level;
+            name = nme;
+            description = desc;
+            level = lvl;
 
-            this.hpMulti  = hp;
-            this.mpMulti  = mp;
-            this.strMulti = str;
-            this.dexMulti = dex;
-            this.intMulti = intP;
-            this.wisMulti = wis;
-            this.lckMulti = lck;
-            this.defMulti = def;
+            hpMulti  = hp;
+            mpMulti  = mp;
+            strMulti = str;
+            dexMulti = dex;
+            intMulti = intP;
+            wisMulti = wis;
+            lckMulti = lck;
+            defMulti = def;
         }
-
+        protected PlayerClass() { } //This is to allow the database to work, bug in current software
     }
 
 
     class PeasantClass : PlayerClass {
         public PeasantClass() {
+            this.id = 0;
             this.name = "Peasant";
             this.description = "You are a peasant";
             this.hpMulti = 0.3f;
@@ -54,6 +59,7 @@ namespace MUDGOD {
 
     class FighterClass : PlayerClass {
         public FighterClass() {
+            this.id = 1;
             this.name = "Fighter";
             this.description = "You smash good";
             this.hpMulti = 1.2f;
@@ -69,6 +75,7 @@ namespace MUDGOD {
 
     class MagicianClass : PlayerClass {
         public MagicianClass() {
+            this.id = 2;
             this.name = "Magician";
             this.description = "You are attuned to the arcane n ting";
             this.hpMulti = 0.6f;
@@ -84,6 +91,7 @@ namespace MUDGOD {
 
     class RangerClass : PlayerClass {
         public RangerClass() {
+            this.id = 3;
             this.name = "Ranger";
             this.description = "You are one with the bow, and the wild I guess";
             this.hpMulti = 1.1f;
@@ -94,6 +102,20 @@ namespace MUDGOD {
             this.wisMulti = 0.6f;
             this.lckMulti = 1;
             this.defMulti = 1.1f;
+        }
+    }
+
+
+
+    public class PlayerClassFunctions {
+        public static PlayerClass GetClass(int id) {
+            PlayerClass newClass = new PeasantClass();
+            if (id == 0) newClass = new PeasantClass();
+            if (id == 1) newClass = new FighterClass();
+            if (id == 2) newClass = new MagicianClass();
+            if (id == 3) newClass = new RangerClass();
+
+            return newClass;
         }
     }
 }
