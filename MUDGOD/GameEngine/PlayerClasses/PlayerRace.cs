@@ -20,10 +20,11 @@ namespace MUDGOD {
         public float lckMulti { get; set; }
         public float defMulti { get; set; }
 
-        public PlayerRace(string nme = "No Race", string desc = "No description", int lvl = 1,
+        public PlayerRace(int idE, string nme = "No Race", string desc = "No description", int lvl = 1,
                            float hp = 1, float mp = 1,
                            float str = 1, float dex = 1, float intP = 1, float wis = 1, float lck = 1, float def = 1) {
             name = nme;
+            id = idE;
             description = desc;
 
             hpMulti  = hp;

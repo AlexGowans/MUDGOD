@@ -8,3 +8,4 @@ D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.AssemblyInfoIn
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.AssemblyInfo.cs
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.dll
 D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.pdb
+D:\SCHOOL\MUDGOD\MUDGOD\MUDGOD\obj\x64\Debug\netcoreapp2.1\MUDGOD.csprojAssemblyReference.cache
