@@ -17,7 +17,7 @@ namespace MUDGOD.Migrations
 
             modelBuilder.Entity("MUDGOD.PlayerData", b =>
                 {
-                    b.Property<int>("dbId")
+                    b.Property<ulong>("playerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("accuracyPoints");
@@ -62,8 +62,6 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("peasantLevel");
 
-                    b.Property<ulong>("playerId");
-
                     b.Property<string>("playerName");
 
                     b.Property<int>("rangerLevel");
@@ -72,7 +70,7 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("wisPoints");
 
-                    b.HasKey("dbId");
+                    b.HasKey("playerId");
 
                     b.ToTable("playerListDB");
                 });

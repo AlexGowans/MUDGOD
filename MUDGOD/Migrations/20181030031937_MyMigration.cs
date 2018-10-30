@@ -2,7 +2,7 @@
 
 namespace MUDGOD.Migrations
 {
-    public partial class Migration : Microsoft.EntityFrameworkCore.Migrations.Migration
+    public partial class MyMigration : Microsoft.EntityFrameworkCore.Migrations.Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,9 +10,8 @@ namespace MUDGOD.Migrations
                 name: "playerListDB",
                 columns: table => new
                 {
-                    dbId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    playerId = table.Column<ulong>(nullable: false),
+                    playerId = table.Column<ulong>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", false),
                     playerName = table.Column<string>(nullable: true),
                     myClassIdHolder = table.Column<int>(nullable: false),
                     myRaceIdHolder = table.Column<int>(nullable: false),
@@ -41,7 +40,7 @@ namespace MUDGOD.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_playerListDB", x => x.dbId);
+                    table.PrimaryKey("PK_playerListDB", x => x.playerId);
                 });
         }
 

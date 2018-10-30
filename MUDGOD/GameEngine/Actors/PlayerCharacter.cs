@@ -174,8 +174,9 @@ namespace MUDGOD {
 
 
     public class PlayerData {
+        //[Key]
+        //public int dbId { get; set; }
         [Key]
-        public int dbId { get; set; }
         public ulong playerId { get; set; }
         public string playerName { get; set; } //the name of the user, not character, that is in Actor and simply called name
 

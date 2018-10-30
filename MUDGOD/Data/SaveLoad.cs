@@ -27,6 +27,7 @@ namespace MUDGOD.Data{
                 //Otherwise update the existing entry
                 else {
                     //PlayerCharacter oldPC = dbContex.playerList.Where(x => x.playerId == userID).FirstOrDefault();  //get the first entry with matching ID
+                    
                     dbContex.playerListDB.Update(ConvertPlayerToData(pc));
                 }
                 await dbContex.SaveChangesAsync();

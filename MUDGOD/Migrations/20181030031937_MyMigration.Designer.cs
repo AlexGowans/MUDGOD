@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MUDGOD.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    [Migration("20181029184134_Migration")]
-    partial class Migration
+    [Migration("20181030031937_MyMigration")]
+    partial class MyMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace MUDGOD.Migrations
 
             modelBuilder.Entity("MUDGOD.PlayerData", b =>
                 {
-                    b.Property<int>("dbId")
+                    b.Property<ulong>("playerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("accuracyPoints");
@@ -64,8 +64,6 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("peasantLevel");
 
-                    b.Property<ulong>("playerId");
-
                     b.Property<string>("playerName");
 
                     b.Property<int>("rangerLevel");
@@ -74,7 +72,7 @@ namespace MUDGOD.Migrations
 
                     b.Property<int>("wisPoints");
 
-                    b.HasKey("dbId");
+                    b.HasKey("playerId");
 
                     b.ToTable("playerListDB");
                 });
