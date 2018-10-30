@@ -22,8 +22,8 @@ namespace MUDGOD.GameEngine.GameCommands {
         public async Task Register() {
 
             ulong id = Context.User.Id;
-            var mention = Context.User.Mention;            
-
+            var mention = Context.User.Mention;
+            
             //Check they aren't already registered
             if (Data.SaveLoad.CheckPlayerIsRegistered(id)) {
                 await Context.Channel.SendMessageAsync($"{mention}\nYou are already registered silly");
@@ -32,7 +32,7 @@ namespace MUDGOD.GameEngine.GameCommands {
 
             //For creating a new PC
             string newName = "";
-            int newRace; //this is an id, it gets attached on creation
+            PlayerRace newRace; //this is an id, it gets attached on creation
 
 
             //Confirm user wants to register
@@ -67,17 +67,17 @@ namespace MUDGOD.GameEngine.GameCommands {
                 return;
             }
             answer = response.Content;
-            if (answer == "Human" || answer == "human") newRace = 0; //Capitalise answers
-            else if (answer == "Elf" || answer == "elf") newRace = 1;
-            else if (answer == "Dwarf" || answer == "dwarf") newRace = 2;
-            else if (answer == "Dragonborn" || answer == "Dragonborn") newRace = 3;
+            if (answer == "Human" || answer == "human") newRace = new HumanRace(); //Capitalise answers
+            else if (answer == "Elf" || answer == "elf") newRace = new ElfRace();
+            else if (answer == "Dwarf" || answer == "dwarf") newRace = new DwarfRace();
+            else if (answer == "Dragonborn" || answer == "Dragonborn") newRace = new DragonbornRace();
             else {
                 await ReplyAsync($"{mention}\nYou must enter a valid race\nPlease try again **^register**");
                 return;
             }
 
             //Confirm
-            await ReplyAsync($"{mention}\nYou are **{newName}** the **{PlayerRaceFunctions.GetRace(newRace).name}**\n Is this correct? Say **yes**");
+            await ReplyAsync($"{mention}\nYou are **{newName}** the **{newRace.name}**\n Is this correct? Say **yes**");
             response = await NextMessageAsync(true, true, responseTime); //true/true : SameUsed/SameChannel
             if (response == null) { //not quick enough
                 await ReplyAsync($"{mention}\nYou did not respond in time\nTo try again use **^register**");
@@ -87,14 +87,23 @@ namespace MUDGOD.GameEngine.GameCommands {
             if (answer != "yes" && answer != "Yes" && answer != "Y" && answer != "y") return;
 
             //Create New PC
-            PlayerCharacter newPC = new PlayerCharacter(id,Context.User.Username,newName, 0, newRace);
+            PlayerCharacter newPC = new PlayerCharacter(id,Context.User.Username,newName, new PeasantClass(), newRace);
 
-            await ReplyAsync("Made the pc froze saving ");
 
             //Save to Database
             await Data.SaveLoad.SavePlayerCharacter(id, newPC);
             await ReplyAsync($"{mention}\nWelcome to the world {newPC.name}");
 
         }
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -35,7 +35,7 @@ namespace MUDGOD{
         public int locationY { get; set; }
 
         //INITIALISE
-        /*
+        
         public Actor(string name = "No-name", int size = 1, int level = 1,
                                 int hp = 100, int mp = 100,
                                 int str = 10, int dex = 10, int intP = 10, int wis = 10, int lck = 10, int def = 10,
@@ -64,7 +64,7 @@ namespace MUDGOD{
             this.locationX = locX;
             this.locationY = locY;
         }
-        */
+        
 
         //Taking hits
         public virtual void IncHp(int val) {
